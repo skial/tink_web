@@ -3,7 +3,9 @@ package tink.web.macros;
 import haxe.macro.Context;
 import haxe.macro.Type;
 import haxe.macro.Expr;
+import tink.http.Method;
 import tink.web.macros.Rule.Rules;
+import tink.web.macros.IntegrationBuilder;
 
 using haxe.macro.Tools;
 using tink.MacroApi;
@@ -215,7 +217,12 @@ class Routing {
       case v: 
         v[1].reject('Not Implemented');
     }
-    
+		
+    IntegrationBuilder.add(uri, switch (verb.expr) {
+			case EConst(CString(v)): Method.ofString(v, function(_) return GET);
+			case _: GET;
+		});
+		
     var parts = uri.path.parts();
     if (!withRest) {
       withRest = parts[parts.length - 1] == '*';
