@@ -4,6 +4,7 @@ import haxe.macro.Context;
 import haxe.macro.Expr;
 import haxe.macro.Type;
 import tink.macro.BuildCache;
+import haxe.ds.Option;
 
 import tink.typecrawler.Crawler;
 import tink.typecrawler.FieldInfo;

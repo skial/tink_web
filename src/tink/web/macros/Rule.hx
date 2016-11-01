@@ -4,6 +4,7 @@ import haxe.macro.Expr;
 import haxe.macro.Type;
 import tink.core.Pair;
 import tink.http.Method;
+import haxe.ds.Option;
 
 using tink.MacroApi;
 using StringTools;
